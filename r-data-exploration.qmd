@@ -1,0 +1,67 @@
+---
+title: "r-data-exploration"
+author: "Melannie Moreno Rolon"
+format: html
+editor: visual
+---
+
+## **Data exploration & summarizing in R**
+
+```{r}
+library(GGally)
+library(skimr)
+library(tidyverse)
+library(ggplot2)
+```
+
+```{r}
+view(diamonds) #look at the built-in dataset
+```
+
+```{r}
+#exploring the dataset
+names(diamonds)
+```
+
+```{r}
+dim(diamonds)
+```
+
+```{r}
+summary(diamonds)
+```
+
+```{r}
+head(diamonds)
+```
+
+```{r}
+tail(diamonds)
+```
+
+```{r}
+skimr::skim(diamonds)
+```
+
+```{r}
+#create a pairs plot
+GGally::ggpairs(diamonds)
+```
+
+```{r}
+#pairs plot with 3 columns
+GGally::ggpairs(diamonds, columns = 5:7, ggplot2::aes(colour = color))
+```
+
+```{r}
+#Create a basic ggplot scatterplot of diamond price (price) as a function of size (carat)
+
+ggplot(data = diamonds, aes(x = carat, y = price, colour = color)) +
+  geom_point()
+```
+
+```{r}
+#Create a histogram showing the distribution of values in the carat column
+ggplot(data = diamonds, aes(x = carat, fill = color)) +
+  geom_histogram()
+```
